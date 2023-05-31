@@ -41,10 +41,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
                 "user-agent": ctx.req.headers["user-agent"],
                 "x-forwarded-for": ctx.req.socket.remoteAddress
             }
-        },
-        fetchPolicy: "network-only"
+        }
     });
-    console.log(data);
     return addApolloState(apolloClient, {
         props: {},
     })

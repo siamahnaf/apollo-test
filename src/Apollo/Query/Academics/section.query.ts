@@ -14,10 +14,6 @@ query getSections($searchInput: SearchInput!) {
   getSections(searchInput: $searchInput) {
     id
     name
-    createdBy {
-      name
-      phone
-    }
   }
 }
 `;

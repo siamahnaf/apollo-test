@@ -10,10 +10,6 @@ export interface AddSectionData {
 export interface Section {
   id: string;
   name: string;
-  createdBy: {
-    name: string;
-    phone: string;
-  }
 }
 
 //Get Section

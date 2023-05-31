@@ -7,7 +7,7 @@ import {
 import merge from 'deepmerge';
 import isEqual from 'lodash-es/isEqual';
 
-const COUNTRIES_API = 'http://localhost:3001/ecampus';
+const API_URL = "https://jv6hfhcmdby7cq2biaf6jnlehy.srv.us/ecampus";
 
 const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
 
@@ -16,7 +16,7 @@ let apolloClient: ApolloClient<NormalizedCacheObject> | null;
 function createApolloClient() {
     return new ApolloClient({
         ssrMode: typeof window === 'undefined',
-        uri: COUNTRIES_API,
+        uri: API_URL,
         cache: new InMemoryCache(),
         credentials: 'include'
     });
@@ -36,6 +36,7 @@ export function initializeApollo(initialState?: any) {
                 ),
             ],
         });
+        console.log("beforeRestore", data);
         _apolloClient.cache.restore(data);
     }
 

@@ -16,7 +16,6 @@ const Lists = () => {
     //Apollo Hook
     const sectionsData = useQuery<GetSectionListData>(GET_SECTION_LIST, { variables: { searchInput: {} } });
 
-
     const [deleteSection, { data, error }] = useMutation<DeleteSectionData>(DELETE_SECTION_LIST, {
         onCompleted: () => setNotification(true),
         refetchQueries: [{ query: GET_SECTION_LIST, variables: { searchInput: {} } }]
@@ -47,7 +46,6 @@ const Lists = () => {
                     <thead>
                         <tr>
                             <th className="bg-primary capitalize text-main font-medium">Section Name</th>
-                            <th className="bg-primary capitalize text-main font-medium">Created By</th>
                             <th className="bg-primary capitalize text-main font-medium">Action</th>
                         </tr>
                     </thead>
@@ -55,7 +53,6 @@ const Lists = () => {
                         {sectionsData.data?.getSections.map((item, i) => (
                             <tr key={i}>
                                 <td>{item.name}</td>
-                                <td>+{item.createdBy?.name || item.createdBy?.phone}</td>
                                 <td className="flex gap-3">
                                     <div className="tooltip" data-tip="Edit">
                                         <button className="text-blue-600">
